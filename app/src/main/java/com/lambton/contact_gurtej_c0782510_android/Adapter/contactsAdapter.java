@@ -27,13 +27,14 @@ public abstract class contactsAdapter extends RecyclerView.Adapter<contactsAdapt
     @NonNull
     @Override
     public Viewholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View itemview= LayoutInflater.from(context).inflate(R.layout.contact_item,parent,false);
-        return new Viewholder(itemview);
+        View itemView= LayoutInflater.from(context).inflate(R.layout.contact_item,parent,false);
+        return new Viewholder(itemView);
     }
 
     @Override
     public void onBindViewHolder(@NonNull Viewholder holder, final int position) {
-        holder.title.setText(contacts.get(position).getFname());
+        String name = contacts.get(position).getFname() + " "+ contacts.get(position).getLname();
+        holder.title.setText(name);
         holder.address.setText(contacts.get(position).getAddress());
         holder.emailAdd.setText(contacts.get(position).getEmail());
         holder.phone.setText(String.valueOf(contacts.get(position).getNumber()));
