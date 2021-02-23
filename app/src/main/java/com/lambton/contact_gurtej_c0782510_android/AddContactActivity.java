@@ -7,17 +7,23 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class AddContactActivity extends AppCompatActivity {
     Button back,save,delete;
     EditText fname,lname,email,phone,address;
     ContactDatabase contactDatabase;
     Contact selectedContact;
+    TextView title;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_contact);
+        title = findViewById(R.id.textView);
         fname = findViewById(R.id.editFname);
         lname = findViewById(R.id.editLname);
         email = findViewById(R.id.editEmailAdd);
@@ -33,6 +39,10 @@ public class AddContactActivity extends AppCompatActivity {
         delete.setOnClickListener(v -> {
             if(selectedContact != null){
                 contactDatabase.getContactDeo().delete(selectedContact);
+                Intent i = new Intent();
+                i.putExtra("changed",true);
+                setResult(RESULT_OK, i);
+                finish();
             }
         });
         save.setOnClickListener(v ->{
@@ -53,12 +63,11 @@ public class AddContactActivity extends AppCompatActivity {
                 setResult(RESULT_OK, i);
                 finish();
             }
-            else{
-                Toast.makeText(getApplicationContext(),"All fields are required",Toast.LENGTH_SHORT).show();
-            }
         });
         int selectedIndex = getIntent().getIntExtra("selectedIndex",-1);
+        title.setText(R.string.addContact);
         if(selectedIndex != -1){
+            title.setText(R.string.updateContact);
             getDataAndSetIT(selectedIndex);
         }
 
@@ -80,7 +89,24 @@ public class AddContactActivity extends AppCompatActivity {
     }
 
     private boolean validateData() {
-        return fname.getText().toString().length() != 0 && lname.getText().toString().length() != 0 && address.getText().toString().length() != 0 && phone.getText().toString().length() != 0 && email.getText().toString().length() != 0;
-    }
+         if(fname.getText().toString().length() != 0 && lname.getText().toString().length() != 0 && address.getText().toString().length() != 0 && phone.getText().toString().length() != 0 && email.getText().toString().length() != 0){
 
+                 Toast.makeText(getApplicationContext(),"All fields are required",Toast.LENGTH_SHORT).show();
+             return false;
+        }
+         if (!emailValidator(email.getText().toString())){
+             email.setError("This field can not be blank");
+         }
+         return true;
+
+    }
+    public boolean emailValidator(String email)
+    {
+        Pattern pattern;
+        Matcher matcher;
+        final String EMAIL_PATTERN = "^[_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
+        pattern = Pattern.compile(EMAIL_PATTERN);
+        matcher = pattern.matcher(email);
+        return matcher.matches();
+    }
 }

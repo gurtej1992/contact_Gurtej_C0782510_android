@@ -48,7 +48,7 @@ public abstract class contactsAdapter extends RecyclerView.Adapter<contactsAdapt
         return contacts.size();
     }
 
-    public class Viewholder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener{
+    public class Viewholder extends RecyclerView.ViewHolder{
 
         TextView date,title,description, emailAdd;
         ImageView note_img,delete;
@@ -58,36 +58,43 @@ public abstract class contactsAdapter extends RecyclerView.Adapter<contactsAdapt
             title=(TextView)itemView.findViewById(R.id.title);
             description=(TextView)itemView.findViewById(R.id.desc);
             emailAdd =  (TextView)itemView.findViewById(R.id.txtSubjectItem);
-            itemView.setOnClickListener(this);
-            itemView.setOnLongClickListener(this);
+            itemView.setOnClickListener(v ->{
+                updateScreen(getAdapterPosition());
+            });
+            itemView.setOnLongClickListener(v -> {
+                longPressIsInvoke(getAdapterPosition());
+                return true;
+            });
 
         }
 
-        @Override
-        public void onClick(View v) {
-
-            Intent i=new Intent(context, AddContactActivity.class);
-            i.putExtra("selectedIndex",getAdapterPosition());
-            context.startActivity(i);
-
-        }
-
-        @Override
-        public boolean onLongClick(View view) {
-            if (ActivityCompat.checkSelfPermission(context, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
-
-            }
-            else{
-                Intent callIntent = new Intent(Intent.ACTION_CALL);
-                callIntent.setData(Uri.parse("tel:"+ contacts.get(getAdapterPosition()).getNumber()));
-                callIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                context.startActivity(callIntent);
-            }
-
-            return true;
-        }
+//        @Override
+//        public void onClick(View v) {
+//
+//            Intent i=new Intent(context, AddContactActivity.class);
+//            i.putExtra("selectedIndex",getAdapterPosition());
+//            context.startActivity(i);
+//
+//        }
+//
+//        @Override
+//        public boolean onLongClick(View view) {
+//            if (ActivityCompat.checkSelfPermission(context, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+//
+//            }
+//            else{
+//                Intent callIntent = new Intent(Intent.ACTION_CALL);
+//                callIntent.setData(Uri.parse("tel:"+ contacts.get(getAdapterPosition()).getNumber()));
+//                callIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//                context.startActivity(callIntent);
+//            }
+//
+//            return true;
+//        }
     }
 
-    public abstract void deleteAddress(int i);
+    public abstract void updateScreen(int i);
+    public abstract void longPressIsInvoke(int i);
+
 
 }

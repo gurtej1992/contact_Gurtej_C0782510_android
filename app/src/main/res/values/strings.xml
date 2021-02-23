@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">contact_Gurtej_C0782510_android</string>
     <string name="total">Total no. records is</string>
+    <string name="contacts">All Contacts</string>
+    <string name="updateContact">Update Contact</string>
+    <string name="addContact">Add Contact</string>
 </resources>
