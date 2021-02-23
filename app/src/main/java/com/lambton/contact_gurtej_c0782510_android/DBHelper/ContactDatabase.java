@@ -1,11 +1,12 @@
-package com.lambton.contact_gurtej_c0782510_android;
+package com.lambton.contact_gurtej_c0782510_android.DBHelper;
 
 import android.content.Context;
-import android.provider.ContactsContract;
 
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
+
+import com.lambton.contact_gurtej_c0782510_android.Model.Contact;
 
 @Database(entities = { Contact.class }, version = 1)
  public abstract class ContactDatabase extends RoomDatabase {

@@ -1,4 +1,4 @@
-package com.lambton.contact_gurtej_c0782510_android;
+package com.lambton.contact_gurtej_c0782510_android.Model;
 
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;

@@ -1,4 +1,4 @@
-package com.lambton.contact_gurtej_c0782510_android;
+package com.lambton.contact_gurtej_c0782510_android.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,6 +9,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.lambton.contact_gurtej_c0782510_android.Model.Contact;
+import com.lambton.contact_gurtej_c0782510_android.DBHelper.ContactDatabase;
+import com.lambton.contact_gurtej_c0782510_android.R;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -89,16 +93,17 @@ public class AddContactActivity extends AppCompatActivity {
     }
 
     private boolean validateData() {
-         if(fname.getText().toString().length() != 0 && lname.getText().toString().length() != 0 && address.getText().toString().length() != 0 && phone.getText().toString().length() != 0 && email.getText().toString().length() != 0){
-
+         if((fname.getText().toString().length() == 0) || (lname.getText().toString().length() == 0) || (address.getText().toString().length() == 0) || (phone.getText().toString().length() == 0) || (email.getText().toString().length() == 0)){
                  Toast.makeText(getApplicationContext(),"All fields are required",Toast.LENGTH_SHORT).show();
              return false;
         }
-         if (!emailValidator(email.getText().toString())){
-             email.setError("This field can not be blank");
+        else if (!emailValidator(email.getText().toString())){
+             email.setError("Email is invalid");
+             return false;
          }
-         return true;
-
+        else{
+             return true;
+         }
     }
     public boolean emailValidator(String email)
     {

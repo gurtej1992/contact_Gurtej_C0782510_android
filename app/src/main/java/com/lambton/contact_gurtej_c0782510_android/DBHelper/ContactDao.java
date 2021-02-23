@@ -1,10 +1,12 @@
-package com.lambton.contact_gurtej_c0782510_android;
+package com.lambton.contact_gurtej_c0782510_android.DBHelper;
 
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
+
+import com.lambton.contact_gurtej_c0782510_android.Model.Contact;
 
 import java.util.List;
 @Dao

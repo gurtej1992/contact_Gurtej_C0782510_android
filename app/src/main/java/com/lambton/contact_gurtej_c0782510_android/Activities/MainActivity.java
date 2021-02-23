@@ -1,4 +1,4 @@
-package com.lambton.contact_gurtej_c0782510_android;
+package com.lambton.contact_gurtej_c0782510_android.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
@@ -23,6 +23,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.baoyz.actionsheet.ActionSheet;
+import com.lambton.contact_gurtej_c0782510_android.Model.Contact;
+import com.lambton.contact_gurtej_c0782510_android.DBHelper.ContactDatabase;
+import com.lambton.contact_gurtej_c0782510_android.R;
+import com.lambton.contact_gurtej_c0782510_android.Adapter.contactsAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -138,6 +142,8 @@ public class MainActivity extends AppCompatActivity implements ActionSheet.Actio
                 if (data.getBooleanExtra("changed", false)) {
                     madapter.contacts = contactDatabase.getContactDeo().getAll();
                     madapter.notifyDataSetChanged();
+                    String s = "Total Records = " + contactDatabase.getContactDeo().getAll().size();
+                    txtTotal.setText(s);
                 }
             }
         }

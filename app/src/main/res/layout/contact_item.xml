@@ -34,42 +34,118 @@
                 app:layout_constraintTop_toTopOf="parent">
 
 
-                <TextView
-                    android:id="@+id/title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:ellipsize="end"
-                    android:maxLines="1"
-                    android:paddingLeft="@dimen/view_5"
-                    android:text="Titleeeeeeeeeeeeeeeeeeeeeeeeeee"
-                    android:textColor="@android:color/black"
-                    android:textSize="@dimen/txt_14"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/desc"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/view_5"
-                    android:ellipsize="end"
-                    android:maxLines="3"
-                    android:paddingLeft="@dimen/view_5"
-                    android:text="Description"
-                    android:textColor="@android:color/black"
-                    android:textSize="@dimen/txt_14" />
-
-                <TextView
-                    android:id="@+id/txtSubjectItem"
+                <TableLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:ellipsize="end"
-                    android:maxLines="1"
-                    android:paddingLeft="@dimen/view_5"
-                    android:text="Subject"
-                    android:textColor="@android:color/black"
-                    android:textSize="12sp"
-                    android:textStyle="bold" />
+                    android:layout_height="match_parent">
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginBottom="5dp">
+
+                        <TextView
+                            android:id="@+id/textView2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/amaranth_bold"
+                            android:text="Name: "
+                            android:textColor="#000000"
+                            android:textSize="18sp" />
+
+                        <TextView
+                            android:id="@+id/title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:ellipsize="end"
+                            android:fontFamily="@font/amaranth"
+                            android:maxLines="1"
+                            android:paddingLeft="@dimen/view_5"
+                            android:text="Titleeeeeeeeeeeeeeeeeeeeeeeeeee"
+                            android:textColor="#201D1D"
+                            android:textSize="18sp" />
+
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginBottom="5dp">
+
+                        <TextView
+                            android:id="@+id/textView3"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/amaranth_bold"
+                            android:text="Email: "
+                            android:textColor="#000000"
+                            android:textSize="18sp" />
+
+                        <TextView
+                            android:id="@+id/txtViewemail"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:ellipsize="end"
+                            android:fontFamily="@font/amaranth"
+                            android:maxLines="3"
+                            android:paddingLeft="@dimen/view_5"
+                            android:text="Description"
+                            android:textColor="#201D1D"
+                            android:textSize="18sp" />
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginBottom="5dp">
+
+                        <TextView
+                            android:id="@+id/textView4"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/amaranth_bold"
+                            android:text="Phone: "
+                            android:textColor="#000000"
+                            android:textSize="18sp" />
+
+                        <TextView
+                            android:id="@+id/txtViewPhone"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:ellipsize="end"
+                            android:fontFamily="@font/amaranth"
+                            android:maxLines="1"
+                            android:paddingLeft="@dimen/view_5"
+                            android:text="Subject"
+                            android:textColor="#201D1D"
+                            android:textSize="18sp" />
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:id="@+id/textView5"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/amaranth_bold"
+                            android:text="Address: "
+                            android:textColor="#000000"
+                            android:textSize="18sp" />
+
+                        <TextView
+                            android:id="@+id/txtViewAdd"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:ellipsize="end"
+                            android:fontFamily="@font/amaranth"
+                            android:maxLines="1"
+                            android:paddingLeft="@dimen/view_5"
+                            android:text="Subject"
+                            android:textColor="#201D1D"
+                            android:textSize="18sp" />
+                    </TableRow>
+                </TableLayout>
 
             </LinearLayout>
 
